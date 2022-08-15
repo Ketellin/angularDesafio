@@ -1,0 +1,46 @@
+<form>
+    <div>
+      <label>Mês:</label>
+      <br>
+      <input type="text" [(ngModel)]="movimento.datMes" [disabled]="formDisabled" id="mes" name="mes">
+    </div>
+    <div>
+      <label>Ano:</label>
+      <br>
+      <input type="text" [(ngModel)]="movimento.datAno" [disabled]="formDisabled" id="ano" name="ano">
+    </div>
+    <div>
+      <label>Produto:</label>
+      <br>
+      <select  (change)="onProdutoChange($event.target)" [disabled]="formDisabled" id="produto" name="produto" [value]="movimento.codProduto">
+        <option>-- Selecione --</option>
+        <option *ngFor="let produto of produtosList" [value]="produto.codProduto">{{produto.desProduto}}</option>
+      </select>
+    </div>
+    <div>
+      <label>Cosif:</label>
+      <br>
+      <select (change)="onCosifChange($event.target)" [disabled]="formDisabled" id="cosif" name="cosif" [value]="movimento.codCosif">
+          <option>-- Selecione --</option>
+          <option *ngFor="let cosif of cosifsList" [value]="cosif.codCosif">{{cosif.codCosif + " - " + cosif.codClassificacao}}
+            
+          </option>
+      </select>
+    </div>
+    <div>
+      <label>Valor:</label>
+      <br>
+      <input [(ngModel)]="movimento.valValor" [disabled]="formDisabled" type="text" id="valor" name="valor">
+    </div>
+    <div>
+      <label>Descrição:</label>
+      <br>
+      <textarea [(ngModel)]="movimento.desDescricao" [disabled]="formDisabled" id="descricao" name="descricao" cols="30" rows="10"></textarea>
+    </div>
+</form>
+
+<div>
+    <button (click)="onBtnLimparClick()">Limpar</button>
+    <button (click)="onBtnNovoClick()">Novo</button>
+    <button (click)="onBtnIncluirClick()" [disabled]="formDisabled">Incluir</button>
+</div>

@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
   cosifsList: Array<Cosif> = [];
   movimentosList: Array<Movimento> = [];
 
+
   constructor(private http: HttpClient) { }
 
   // Headers
@@ -54,6 +55,7 @@ export class FormComponent implements OnInit {
   }
 
   onBtnIncluirClick() {
+
     this.http.post('http://localhost:8080/api/movimentos', this.movimento).subscribe(
       data => {
         console.log(data);
@@ -64,6 +66,7 @@ export class FormComponent implements OnInit {
     );
     this.limparFormulario();
     this.formDisabled = true;
+    
  
     window.location.reload();
   }
@@ -93,4 +96,6 @@ export class FormComponent implements OnInit {
   private limparFormulario() {
     this.movimento = new Movimento();
   }
+
+
 }
